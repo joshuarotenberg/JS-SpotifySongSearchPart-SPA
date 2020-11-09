@@ -1,3 +1,44 @@
+body,
 html {
-  background-color: gray;
+  background-color: #36393f !important;
+  color: white;
+}
+
+.bg-dark {
+  background-color: black !important;
+}
+
+.search {
+  // background: url(../assets/images/purple-bg.png) top center no-repeat;
+  height: 200px;
+  border-radius: 10px;
+  border: 1px black solid;
+}
+
+.card {
+  background-color: black;
+  .card-footer {
+    border-top: 1px solid #424141 !important;
+  }
+  .btn {
+    background-color: #46017a;
+    border-color: black;
+  }
+  .player,
+  .card-body {
+    position: relative;
+    top: -73px;
+  }
+  .card-body {
+    margin-bottom: -73px;
+    min-height: 215px;
+  }
+  img.card-img-top {
+    position: relative;
+    top: -47px;
+  }
+  .cta {
+    position: relative;
+    z-index: 99;
+  }
 }

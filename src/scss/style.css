@@ -1,0 +1,50 @@
+body,
+html {
+  background-color: #36393f !important;
+  color: white;
+}
+
+.bg-dark {
+  background-color: black !important;
+}
+
+.search {
+  height: 200px;
+  border-radius: 10px;
+  border: 1px black solid;
+}
+
+.card {
+  background-color: black;
+}
+
+.card .card-footer {
+  border-top: 1px solid #424141 !important;
+}
+
+.card .btn {
+  background-color: #46017a;
+  border-color: black;
+}
+
+.card .player,
+.card .card-body {
+  position: relative;
+  top: -73px;
+}
+
+.card .card-body {
+  margin-bottom: -73px;
+  min-height: 215px;
+}
+
+.card img.card-img-top {
+  position: relative;
+  top: -47px;
+}
+
+.card .cta {
+  position: relative;
+  z-index: 99;
+}
+/*# sourceMappingURL=style.css.map */

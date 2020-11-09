@@ -1,0 +1,26 @@
+<div class="col-12 col-sm-6 col-md-4 no-gutters">
+    <div class="card mb-3">
+        <div class="cta d-flex justify-content-end p-2">
+            <button type="button" class="btn btn-secondary btn-sm">
+
+                <span class="fas fa-folder-plus"></span>
+                SAVE
+            </button>
+        </div>
+        <img src="{{album_image}}" class="card-img-top" alt="...">
+        <div class="player d-flex justify-content-center">
+            <audio controls>
+                <source src="{{preview_url}}" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title my-3">{{song_name}}</h5>
+            <p class="card-text">by: {{artist}}</p>
+            <p class="card-text">Album: {{album}}</p>
+
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Popularity: {{popularity}}</small>
+        </div>
+    </div>
+</div>
