@@ -65,5 +65,6 @@ export default function searchPageController() {
             console.log(err);
         });
     });
+
   }
 }

@@ -1,7 +1,9 @@
 import searchPageController from "./controllers/searchPageController";
+import savedPageController from "./controllers/savedPageController";
 
 const routes = {
-  "/search": searchPageController
+    "/search": searchPageController,
+    "/saved": savedPageController
 };
 
 function setRoute() {
