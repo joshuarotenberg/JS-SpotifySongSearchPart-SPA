@@ -16,6 +16,7 @@ export default function searchPageController() {
     const searchPageTemplateFunc = Handlebars.compile(searchPageTemplateHtml);
     const searchResultTemplateFunc = Handlebars.compile(searchResultTemplateHtml);
 
+    
     document
     .getElementById("root")
     .innerHTML = searchPageTemplateFunc();
@@ -23,6 +24,7 @@ export default function searchPageController() {
     // Container that completed Handlebars template HTML will go into
     const songCard = document.getElementById("song-index");
 
+   
     document
     .getElementById("find-song")
     .addEventListener("submit", function(e) {
@@ -52,6 +54,7 @@ export default function searchPageController() {
 
             songs.forEach(function(song) {
                 songCard.innerHTML += searchResultTemplateFunc({
+                    id: song.id,
                     song_name: song.name,
                     artist: song.artists[0].name,
                     album: song.album.name,
@@ -64,6 +67,9 @@ export default function searchPageController() {
         .catch(function(err) {
             console.log(err);
         });
+
+        
+
     });
 
   }
