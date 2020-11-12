@@ -79,16 +79,22 @@ export default function searchPageController() {
               axios(config)
               .then(function (response) {
                 console.log(JSON.stringify(response.data));
+
+                // alert that song was saved with link to /saved
+
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 document.getElementById("alert").innerHTML = `
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>Holy guacamole!</strong> That song was saved.
+                  <strong>Holy guacamole!</strong> That song was saved. Check out your <a href="#/saved">saved songs</a>.
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 `
+                setTimeout(function(){
+                  document.getElementById("alert").remove();
+                  }, 7000);//wait 7 seconds
               })
               .catch(function (error) {
                 console.log(error);
