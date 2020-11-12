@@ -15,6 +15,14 @@ html {
   border: 1px black solid;
 }
 
+.alert {
+  position: absolute;
+  top: 57px;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
 .card {
   background-color: black;
   .card-footer {

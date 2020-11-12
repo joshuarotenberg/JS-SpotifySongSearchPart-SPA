@@ -64,32 +64,30 @@ export default function searchPageController() {
                 });
             })
 
-            const saveTracks = document.querySelector(".save-button");
-
-            saveTracks
+            document
+            .querySelector(".save-button")
             .addEventListener("click", function(e) {
 
-              const authToken = window.localStorage.getItem("authToken");
-
-              var config = {
+              const config = {
                 method: 'put',
                 url: 'https://api.spotify.com/v1/me/tracks?ids=' + e.target.id,
                 headers: { 
-                  'Authorization': 'Bearer ' + authToken
+                  'Authorization': 'Bearer ' + window.localStorage.getItem("authToken")
                 }
               };
               
               axios(config)
               .then(function (response) {
                 console.log(JSON.stringify(response.data));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 document.getElementById("alert").innerHTML = `
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> That song was saved.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>Holy guacamole!</strong> That song was saved.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
                 `
               })
               .catch(function (error) {
