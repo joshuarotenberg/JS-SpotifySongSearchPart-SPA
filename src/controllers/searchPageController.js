@@ -8,13 +8,20 @@ export default function searchPageController() {
     axios
     .get("templates/searchResult.hbs")
     .then((searchResultResponse) => {
-      return render(searchPageResponse.data, searchResultResponse.data);
+      axios
+      .get("templates/relatedResult.hbs")
+      .then((relatedResultResponse) => {
+        return render(searchPageResponse.data, searchResultResponse.data, relatedResultResponse.data);
+
+      });
     });
+    
   });
 
-  function render(searchPageTemplateHtml, searchResultTemplateHtml) {
+  function render(searchPageTemplateHtml, searchResultTemplateHtml, relatedResultTemplateHtml) {
     const searchPageTemplateFunc = Handlebars.compile(searchPageTemplateHtml);
     const searchResultTemplateFunc = Handlebars.compile(searchResultTemplateHtml);
+    const relatedResultTemplateFunc = Handlebars.compile(relatedResultTemplateHtml);
 
     
     document
@@ -23,7 +30,6 @@ export default function searchPageController() {
 
     // Container that completed Handlebars template HTML will go into
     const songCard = document.getElementById("song-index");
-
    
     document
     .getElementById("find-song")
@@ -50,19 +56,49 @@ export default function searchPageController() {
           }
         })
         .then(function(response) {
-            var songs = response.data.tracks.items;
+            const songs = response.data.tracks.items;
+
+            console.log(songs);
 
             songs.forEach(function(song) {
                 songCard.innerHTML += searchResultTemplateFunc({
                     id: song.id,
                     song_name: song.name,
                     artist: song.artists[0].name,
+                    artist_id: song.artists[0].id,
                     album: song.album.name,
                     preview_url: song.preview_url,
                     album_image: song.album.images[1].url,   
                     popularity: song.popularity  
                 });
+
+                axios
+                .get(`https://api.spotify.com/v1/artists/${song.artists[0].id}/related-artists`, {
+                  headers: {
+                    "Authorization": "Bearer " + authToken
+                  }
+                })
+                .then(function(response) {
+                  const relatedCard = document.getElementById("related-index");
+                  const relatedArtists = response.data.artists;
+                  const related = relatedArtists.splice(0,3);
+
+                  console.log(related);
+
+                  related.forEach(function(rel) {
+                    relatedCard.innerHTML += relatedResultTemplateFunc ({
+                      related_artist_name: rel.name,
+                      related_artist_image: rel.images[0].url
+                    });
+                  });
+                   
+                })
+                .catch(function(err) {
+                  console.log(err);
+                })
             })
+
+            
 
             document
             .querySelector(".save-button")
