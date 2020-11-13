@@ -79,18 +79,18 @@ export default function searchPageController() {
                   }
                 })
                 .then(function(response) {
-                  const relatedCard = document.getElementById("related-index");
-                  const relatedArtists = response.data.artists;
-                  const related = relatedArtists.splice(0,3);
+                  // const relatedCard = document.getElementById("related-index");
+                  // const relatedArtists = response.data.artists;
+                  // const related = relatedArtists.splice(0,3);
 
-                  console.log(related);
+                  // console.log(related);
 
-                  related.forEach(function(rel) {
-                    relatedCard.innerHTML += relatedResultTemplateFunc ({
-                      related_artist_name: rel.name,
-                      related_artist_image: rel.images[0].url
-                    });
-                  });
+                  // related.forEach(function(rel) {
+                  //   relatedCard.innerHTML += relatedResultTemplateFunc ({
+                  //     related_artist_name: rel.name,
+                  //     related_artist_image: rel.images[0].url
+                  //   });
+                  // });
                    
                 })
                 .catch(function(err) {
